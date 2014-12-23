@@ -18,18 +18,10 @@ grunt.initConfig({
       }
     }
   },
-  mochacli: {
-    options: {
-        require: ['chai'],
-        reporter: 'nyan',
-        bail: true
-    },
-    all: ['spec/*.js']
-  }
 });
 
 grunt.loadNpmTasks('grunt-mocha-casperjs')
 grunt.loadNpmTasks('grunt-express-server')
 grunt.loadNpmTasks('grunt-mocha-cli')
-grunt.registerTask('default',['mocha_casperjs', 'mochacli', 'express'])
+grunt.registerTask('default',['express','mocha_casperjs'])
 }
