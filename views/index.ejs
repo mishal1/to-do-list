@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
   <head>
@@ -11,18 +12,27 @@
     <h1>To Do List</h1>
 
     <h2>Tasks</h2>
-    <article id="incompleteTasks">
       <form id="form">
         <input name='input' id='userInput'>
         <input type="submit" value="+" id='addTaskButton'>
       </form>
-      <script src="/js/task.js"></script>
-    </article>
+    <ul id="incompleteTasks">
+      <li>
+        <input type="checkbox">
+          <label>Sleep</label>
+      </li>
+    </ul>
 
     <h2>Completed Tasks</h2>
-    <article>
-    </article>
+    <ul id="completedTasks">
+    <li>
+        <input type="checkbox">
+          <label>Eat</label>
+      </li>
+    </ul>
 
+    <script src="/js/task.js"></script>
+    
   </body>
 
 </html>
