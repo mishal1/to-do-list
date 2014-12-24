@@ -35,5 +35,13 @@ describe('homepage', function(){
     });
   });
 
+  it('item should have a delete button that removes item from the task list', function(){
+    casper.then(function(){
+      fillForm(this)
+      this.click('.delete')
+      expect("body").not.to.contain.text('hello')
+    });
+  });
+
 });
 
