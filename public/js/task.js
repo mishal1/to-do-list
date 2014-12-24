@@ -6,11 +6,12 @@ var completedTasks= document.getElementById("completedTasks"); //completed-tasks
 
 var NewTaskElement = function(taskString) {
   var listItem = document.createElement("li");
-  var checkBox = document.createElement("input"); // checkbox
+  var checkbox = document.createElement("input"); // checkbox
   var label = document.createElement("label");
-  checkBox.type = "checkbox";
+  checkbox.type = "checkbox";
   label.innerText = taskString;
-  listItem.appendChild(checkBox);
+  checkbox.className = "checkbox"
+  listItem.appendChild(checkbox);
   listItem.appendChild(label);
   return listItem;
 }
@@ -23,11 +24,15 @@ var addTask = function() {
 }
 
 var taskCompleted = function() {
-  alert("Task complete...");
+  var listItem = this.parentNode;
+  completedTasks.appendChild(listItem);
+  bindTaskEvents(listItem, taskIncomplete)
 }
 
 var taskIncomplete = function() {
-  alert("Task incomplete...");
+  var listItem = this.parentNode;
+  incompleteTasks.appendChild(listItem);
+  bindTaskEvents(listItem, taskCompleted);
 }
 
 var bindTaskEvents = function(taskListItem, checkBoxEventHandler) {
@@ -42,7 +47,6 @@ for(var i = 0; i < incompleteTasks.children.length; i++) {
   bindTaskEvents(incompleteTasks.children[i], taskCompleted);
 }
 
-//cycle over completedTasksHolder ul list items
 for(var i = 0; i < completedTasks.children.length; i++) {
   bindTaskEvents(completedTasks.children[i], taskIncomplete);
 }

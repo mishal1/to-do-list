@@ -8,7 +8,7 @@ describe('homepage', function(){
     casper.fill('#form',{
         input: 'hello'
       }, true);
-      casper.click('#addTaskbutton')
+      casper.click('button')
   };
 
   it('says today, tomorrow, upcoming, someday and completed', function(){
@@ -29,8 +29,9 @@ describe('homepage', function(){
     casper.then(function(){
       fillForm(this)
       this.click('.checkbox')
+      // had to add in checkbox class- look for alternative
       expect("#incompleteTasks").not.to.contain.text('hello')
-      expect("completedTasks").to.contain.text('hello')
+      expect("#completedTasks").to.contain.text('hello')
     });
   });
 
