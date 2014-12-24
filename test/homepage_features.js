@@ -6,11 +6,20 @@ describe('homepage', function(){
 
   it('says today, tomorrow, upcoming, someday and completed', function(){
     casper.then(function(){
-      expect("body").to.contain.text("Today")
-      expect("body").to.contain.text("Tomorrow")
-      expect("body").to.contain.text("Upcoming")
-      expect("body").to.contain.text("Someday")
-      expect("body").to.contain.text("Completed")
+      expect("body").to.contain.text("Tasks")
+      expect("body").to.contain.text("Completed Tasks")
+    });
+  });
+
+  it('should have a button and field to enter items which appends to the section', function(){
+    casper.then(function(){
+      this.fill('.form',{
+        input: 'eat'
+      }, true);
+      this.click('#button')
+    });
+    casper.waitForUrl('/', function(){
+      expect("#today").to.contain.text('eat')
     });
   });
 
