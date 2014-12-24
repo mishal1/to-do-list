@@ -4,6 +4,13 @@ describe('homepage', function(){
     casper.start('http:localhost:3000/');
   });
 
+  var fillForm = function(casper){
+    casper.fill('#form',{
+        input: 'hello'
+      }, true);
+      casper.click('#addTaskbutton')
+  };
+
   it('says today, tomorrow, upcoming, someday and completed', function(){
     casper.then(function(){
       expect("body").to.contain.text("Tasks")
@@ -13,13 +20,17 @@ describe('homepage', function(){
 
   it('should have a button and field to enter items which appends to the section', function(){
     casper.then(function(){
-      this.fill('.form',{
-        input: 'eat'
-      }, true);
-      this.click('#button')
+      fillForm(this)
+      expect("#incompleteTasks").to.contain.text('hello')
     });
-    casper.waitForUrl('/', function(){
-      expect("#today").to.contain.text('eat')
+  });
+
+  it('each item should have a tick box that moves an item to the completed tasks section', function(){
+    casper.then(function(){
+      fillForm(this)
+      this.click('.checkbox')
+      expect("#incompleteTasks").not.to.contain.text('hello')
+      expect("completedTasks").to.contain.text('hello')
     });
   });
 

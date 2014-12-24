@@ -1,26 +1,26 @@
 var addTaskButton = document.getElementById('addTaskButton')
-var tasks = document.getElementById('tasks')
-
+var incompleteTasks = document.getElementById('incompleteTasks')
+var taskInput = document.getElementById('userInput')
 
 var newTaskElement = function(taskString) {
   var listItem = document.createElement("li")
-  var checkbox = document.createElement("input")
   var label = document.createElement("label")
-  var editButton = document.createElement("button")
-  // var editInput = document.createElement("input")
-  var deleteButton = document.createElement("button")
+  var checkbox = document.createElement("input")
+  label.innerText = taskString
+  checkbox.type = "checkbox"
+  checkbox.className = "checkbox"
   listItem.appendChild(checkbox)
   listItem.appendChild(label)
-  listItem.appendChild(editButton)
-  listItem.appendChild(deleteButton)
   return listItem;
 };
 
 var addTask = function() {
-  var listItem = newTaskElement("hello")
-  tasks.appendChild(listItem)
+  var listItem = newTaskElement(taskInput.value)
+  incompleteTasks.appendChild(listItem)
 };
 
+
 addTaskButton.addEventListener('click', function(){
+  event.preventDefault();
   addTask()        
 });
