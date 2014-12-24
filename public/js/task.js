@@ -28,7 +28,9 @@ var addTask = function() {
 }
 
 var deleteTask = function() {
-  alert('delete')
+  var listItem = this.parentNode;
+  var entireList = listItem.parentNode;
+  entireList.removeChild(listItem);
 }
 
 var taskCompleted = function() {

@@ -35,11 +35,20 @@ describe('homepage', function(){
     });
   });
 
-  it('item should have a delete button that removes item from the task list', function(){
+  it('item should have a delete button that removes item from the incompleted task list', function(){
     casper.then(function(){
       fillForm(this)
       this.click('.delete')
-      expect("body").not.to.contain.text('hello')
+      expect("#completedTasks").not.to.contain.text('hello')
+    });
+  });
+
+  it('item should have a delete button that removes item from the completed task list', function(){
+    casper.then(function(){
+      fillForm(this)
+      this.click('.checkbox')
+      this.click('.delete')
+      expect("#incompletedTasks").not.to.contain.text('hello')
     });
   });
 
