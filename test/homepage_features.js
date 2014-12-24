@@ -35,7 +35,7 @@ describe('homepage', function(){
     });
   });
 
-  it('item should have a delete button that removes item from the incompleted task list', function(){
+  it('item can be deleted from the incompleted task list', function(){
     casper.then(function(){
       fillForm(this)
       this.click('.delete')
@@ -43,7 +43,7 @@ describe('homepage', function(){
     });
   });
 
-  it('item should have a delete button that removes item from the completed task list', function(){
+  it('item can be deleted from completed task list', function(){
     casper.then(function(){
       fillForm(this)
       this.click('.checkbox')

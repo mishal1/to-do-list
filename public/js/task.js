@@ -1,8 +1,7 @@
 var taskInput = document.getElementById("userInput");
 var addTaskButton = document.getElementById('addTaskButton'); 
 var incompleteTasks = document.getElementById("incompleteTasks"); 
-var completedTasks= document.getElementById("completedTasks"); 
-
+var completedTasks= document.getElementById("completedTasks");
 
 var NewTaskElement = function(taskString) {
   var listItem = document.createElement("li");
@@ -11,7 +10,7 @@ var NewTaskElement = function(taskString) {
   var deleteButton = document.createElement("button");
   checkbox.type = "checkbox";
   label.innerText = taskString;
-  deleteButton.className = "delete"
+  deleteButton.className = "delete btn-link"
   deleteButton.innerText = "X"
   checkbox.className = "checkbox"
   listItem.appendChild(checkbox);
@@ -47,9 +46,9 @@ var taskIncomplete = function() {
 
 var bindTaskEvents = function(taskListItem, checkBoxEventHandler) {
   var checkBox = taskListItem.querySelector("input[type=checkbox]");
-  var deleteButton = taskListItem.querySelector("button.delete")
+  var deleteButton = taskListItem.querySelector("button.delete");
   checkBox.onchange = checkBoxEventHandler;
-  deleteButton.onclick = deleteTask
+  deleteButton.onclick = deleteTask;
 }
 
 addTaskButton.addEventListener("click", addTask);
