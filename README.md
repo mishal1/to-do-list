@@ -6,6 +6,7 @@ A simple implementation of a to-do list application.
 
 ##Learning Objectives
 - Avoid using jQuery and only use javascript
+- TDD 
 
 ##Technology Used
 - Javascript
